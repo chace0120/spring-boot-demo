@@ -16,8 +16,8 @@ public class ExceptionController {
         throw new RuntimeException("error occur");
     }
 
-    @RequestMapping("/500")
+    @RequestMapping("/404")
     public String showServerError() {
-        return "server error";
+        return "not found";
     }
 }
