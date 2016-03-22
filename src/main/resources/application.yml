@@ -1,7 +1,0 @@
-environments:
-    dev:
-        url: http://dev.bar.com
-        name: Developer Setup
-    prod:
-        url: http://foo.bar.com
-        name: My Cool App

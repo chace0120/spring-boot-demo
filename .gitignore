@@ -1,3 +1,6 @@
 /.idea
 /target
 /SpringBootDemo.iml
+/*.iml
+/spring-boot-quartz/*.iml
+/spring-boot-quartz/target
