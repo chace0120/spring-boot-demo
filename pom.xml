@@ -10,6 +10,8 @@
     <version>1.0</version>
     <modules>
         <module>spring-boot-quartz</module>
+        <module>spring-boot-webmvc</module>
+        <module>spring-boot-springsession</module>
     </modules>
 
     <parent>
