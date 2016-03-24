@@ -1,4 +1,8 @@
-#SpringBootDemo
+# SpringBootDemo
+
+## spring-boot-springsession
+
+新增了SpringBoot中配置Spring Session的方式及示例。主要演示Session存储于Redis的功能，以及Cookie传输sessionid与Request Head传输sessionid的配置。
 
 ## spring-boot-quartz
 
