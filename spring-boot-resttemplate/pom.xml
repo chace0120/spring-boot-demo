@@ -9,5 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring-boot-webmvc</artifactId>
+    <artifactId>spring-boot-resttemplate</artifactId>
+
+
 </project>

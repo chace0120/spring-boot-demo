@@ -1,6 +1,5 @@
 package cn.chace.www.springboot.quartz;
 
-import cn.chace.www.springboot.quartz.config.QuartzConfig;
 import cn.chace.www.springboot.quartz.job.QuartzJob;
 import cn.chace.www.springboot.quartz.job.QuartzJobEntity;
 import cn.chace.www.springboot.quartz.job.QuartzManager;
@@ -52,7 +51,4 @@ public class ApplicationTest {
             e.printStackTrace();
         }
     }
-
-    @Test
-    public void msg(){}
 }
