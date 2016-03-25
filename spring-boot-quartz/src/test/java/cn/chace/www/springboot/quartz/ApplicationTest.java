@@ -52,4 +52,7 @@ public class ApplicationTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void msg(){}
 }
