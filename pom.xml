@@ -13,6 +13,7 @@
         <module>spring-boot-webmvc</module>
         <module>spring-boot-springsession</module>
         <module>spring-boot-resttemplate</module>
+        <module>spring-boot-mybatis</module>
     </modules>
 
     <parent>
