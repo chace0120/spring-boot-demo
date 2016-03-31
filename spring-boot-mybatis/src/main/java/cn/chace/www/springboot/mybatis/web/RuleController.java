@@ -29,7 +29,7 @@ public class RuleController {
     public String addRule() {
         RuleDetail ruleDetail = new RuleDetail();
         ruleDetail.setDayOfWeek(DayOfWeek.Mon);
-        ruleDetail.setRuleId(5);
+        ruleDetail.setRuleId(20);
         ruleDetail.setStartTime(new Time(System.currentTimeMillis()));
         ruleDetail.setEndTime(new Time(System.currentTimeMillis()));
 

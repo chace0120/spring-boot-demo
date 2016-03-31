@@ -22,7 +22,8 @@ public class UserController {
      * 获取单个用户
      */
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
-    public User getUser(@PathVariable int userId) {
+    public User getUser(@PathVariable int userId) throws InterruptedException {
+        Thread.sleep(3000); //模拟网络延时
         return new User(userId, "A", 8);
     }
 
