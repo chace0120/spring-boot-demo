@@ -1,6 +1,5 @@
 package cn.chace.www.spring.boot.redis.model;
 
-import com.fasterxml.jackson.core.SerializableString;
 
 import java.io.Serializable;
 
