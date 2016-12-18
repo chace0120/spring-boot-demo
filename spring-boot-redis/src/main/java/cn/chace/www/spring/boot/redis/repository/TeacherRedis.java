@@ -17,9 +17,9 @@ import javax.annotation.PostConstruct;
 @Repository
 public class TeacherRedis {
     @Autowired
-    private RedisTemplate<String, Teacher> redisTemplate;
+    private RedisTemplate redisTemplate;
 
-    private ValueOperations<String, Teacher> valueOperations;
+    private ValueOperations valueOperations;
 
     @PostConstruct
     public void init() {
@@ -31,6 +31,6 @@ public class TeacherRedis {
     }
 
     public Teacher getTeacherInfo() {
-        return valueOperations.get("test.teacher");
+        return (Teacher) valueOperations.get("test.teacher");
     }
 }

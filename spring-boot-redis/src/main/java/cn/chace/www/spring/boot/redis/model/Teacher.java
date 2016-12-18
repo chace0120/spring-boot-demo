@@ -24,4 +24,28 @@ public class Teacher implements Serializable {
         this.name = name;
         this.classIds = classIds;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Integer> getClassIds() {
+        return classIds;
+    }
+
+    public void setClassIds(List<Integer> classIds) {
+        this.classIds = classIds;
+    }
 }

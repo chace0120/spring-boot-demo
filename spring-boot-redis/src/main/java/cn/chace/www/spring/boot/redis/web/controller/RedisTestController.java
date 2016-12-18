@@ -2,6 +2,7 @@ package cn.chace.www.spring.boot.redis.web.controller;
 
 import cn.chace.www.spring.boot.redis.model.Teacher;
 import cn.chace.www.spring.boot.redis.repository.TeacherRedis;
+import cn.chace.www.spring.boot.redis.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +22,8 @@ import java.util.Map;
 public class RedisTestController {
     @Autowired
     private TeacherRedis teacherRedis;
+    @Autowired
+    private TeacherService teacherService;
 
     @RequestMapping(value = "redis", method = RequestMethod.GET)
     public Teacher doRedisSerialize() {
@@ -34,5 +37,10 @@ public class RedisTestController {
         teacher = teacherRedis.getTeacherInfo();
 
         return teacher;
+    }
+
+    @RequestMapping(value = "redis/cache", method = RequestMethod.GET)
+    public Teacher getFromCache() {
+        return teacherService.getDetail();
     }
 }
