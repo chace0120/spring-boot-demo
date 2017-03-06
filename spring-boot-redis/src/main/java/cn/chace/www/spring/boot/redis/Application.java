@@ -27,8 +27,8 @@ import java.util.Map;
 @EnableCaching
 public class Application extends CachingConfigurerSupport {
     @Bean
-    public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory){
-        final StringRedisTemplate template = new StringRedisTemplate(factory);
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory){
+        final RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(factory);
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
 
