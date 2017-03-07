@@ -1,18 +1,21 @@
 package cn.chace.www.springboot.resttemplate;
 
+import cn.chace.www.springboot.resttemplate.component.XmlRestClient;
 import cn.chace.www.springboot.resttemplate.entity.User;
+import cn.chace.www.springboot.resttemplate.entity.gocanvas.CanvasResult;
 import com.google.common.collect.Maps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,11 +27,19 @@ import static org.junit.Assert.*;
  * @author chenx
  * @date 2016/3/25
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(Application.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ApplicationTest {
     @Autowired
     RestTemplate restTemplate;
+    @Autowired
+    private XmlRestClient restClient;
+
+    @Test
+    public void readGoCanvasApi() {
+        String url = "https://www.gocanvas.com/apiv2/submissions.xml?username=jlin@menlohotels.com&password=canvas&response_id=06581301-D9BC-444C-8120-6B65C64BAA64";
+        System.out.println(restClient.getForObject(url, null, CanvasResult.class, new HashMap<String, String>()).toString());
+    }
 
     @Test
     public void getUser() {
