@@ -37,7 +37,7 @@ public class ApplicationTest {
 
     @Test
     public void readGoCanvasApi() {
-        String url = "https://www.gocanvas.com/apiv2/submissions.xml?username=jlin@menlohotels.com&password=canvas&response_id=06581301-D9BC-444C-8120-6B65C64BAA64";
+        String url = "https://www.gocanvas.com/apiv2/submissions.xml?username=xxx&password=xxx&response_id=06581301-D9BC-444C-8120-6B65C64BAA64";
         System.out.println(restClient.getForObject(url, null, CanvasResult.class, new HashMap<String, String>()).toString());
     }
 
