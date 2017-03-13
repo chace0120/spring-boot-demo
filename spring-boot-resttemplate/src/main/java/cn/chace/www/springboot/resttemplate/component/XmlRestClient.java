@@ -1,6 +1,9 @@
 package cn.chace.www.springboot.resttemplate.component;
 
 import cn.chace.www.springboot.resttemplate.entity.gocanvas.*;
+import cn.chace.www.springboot.resttemplate.entity.gocanvas.referencedata.Columns;
+import cn.chace.www.springboot.resttemplate.entity.gocanvas.referencedata.RefData;
+import cn.chace.www.springboot.resttemplate.entity.gocanvas.referencedata.Row;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -31,7 +34,8 @@ public class XmlRestClient {
     @PostConstruct
     public void init() {
         XStreamMarshaller marshaller = new XStreamMarshaller();
-        marshaller.setAnnotatedClasses(CanvasResult.class, Form.class, Response.class, ResponseGroup.class, Screen.class, Section.class, Submission.class);
+        marshaller.setAnnotatedClasses(CanvasResult.class, Form.class, Response.class, ResponseGroup.class, Screen.class,
+                Section.class, Submission.class, RefData.class, Columns.class, Row.class);
         MarshallingHttpMessageConverter marshallingConverter = new MarshallingHttpMessageConverter(marshaller);
 
         List<HttpMessageConverter<?>> converters = new ArrayList<HttpMessageConverter<?>>();
@@ -40,7 +44,7 @@ public class XmlRestClient {
         restTemplate.setMessageConverters(converters);
     }
 
-    public <T> T getForObject(String url, Map<String, Object> headers, Class<T> responseType, Map<String, String> urlParams) {
+    public <T> T getForObject(String url, Map<String, String> headers, Class<T> responseType, Map<String, String> urlParams) {
         HttpHeaders httpHeaders = this.buildHeads(headers);
         HttpEntity request = new HttpEntity(httpHeaders);
         ResponseEntity<T> responseEntity = restTemplate.exchange(url, HttpMethod.GET, request, responseType, urlParams);
@@ -48,7 +52,17 @@ public class XmlRestClient {
         return responseEntity.getBody();
     }
 
-    private HttpHeaders buildHeads(Map<String, Object> headersMap) {
+    public void postForObject(String url, Map<String, String> headers, Object body, Map<String, String> urlParams) {
+        HttpHeaders httpHeaders = this.buildHeads(headers);
+        HttpEntity request = new HttpEntity(body, httpHeaders);
+        ResponseEntity responseEntity = restTemplate.exchange(url, HttpMethod.POST, request, Object.class, urlParams);
+        System.out.println(responseEntity.getBody());
+        if (responseEntity.getStatusCode() != HttpStatus.OK) {
+            throw new RuntimeException("Post request failed:" + responseEntity);
+        }
+    }
+
+    private HttpHeaders buildHeads(Map<String, String> headersMap) {
         HttpHeaders headers = new HttpHeaders();
 
         if (headersMap != null) {
